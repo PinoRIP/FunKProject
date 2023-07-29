@@ -3,7 +3,7 @@
 #include "EventBus/FunKEventBusSubsystem.h"
 #include "Tests/AutomationEditorCommon.h"
 
-BEGIN_DEFINE_SPEC(FFunKEventBusSubsystemTests, "FFunKTests.EventBus.FunKEventBusSubsystemTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+BEGIN_DEFINE_SPEC(FFunKEventBusSubsystemTests, "FunKTests.EventBus.FunKEventBusSubsystemTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 	UWorld* World;
 	UFunKEventBusSubsystem* EventBusSubsystem;
 END_DEFINE_SPEC(FFunKEventBusSubsystemTests)
@@ -22,14 +22,14 @@ void FFunKEventBusSubsystemTests::Define()
 		{
 			It("Should register events", [this]()
 			{
-				FEventBusRegistration registration = this->EventBusSubsystem->On<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
+				FFunKEventBusRegistration registration = this->EventBusSubsystem->On<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
 				TestTrue("IsValid", registration.IsValid());
 			});
 
 			It("Should receive events", [this]()
 			{
 				bool eventReceived = false;
-				FEventBusRegistration registration = this->EventBusSubsystem->On<FEventBusTestEvent>([&eventReceived](const FEventBusTestEvent& test)
+				FFunKEventBusRegistration registration = this->EventBusSubsystem->On<FEventBusTestEvent>([&eventReceived](const FEventBusTestEvent& test)
 				{
 					eventReceived = true;
 				});
@@ -44,14 +44,14 @@ void FFunKEventBusSubsystemTests::Define()
 		{
 			It("Should register events", [this]()
 			{
-				FEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
+				FFunKEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
 				TestTrue("IsValid", registration.IsValid());
 			});
 
 			It("Should receive events", [this]()
 			{
 				bool eventReceived = false;
-				FEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([&eventReceived](const FEventBusTestEvent& test)
+				FFunKEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([&eventReceived](const FEventBusTestEvent& test)
 				{
 					eventReceived = true;
 				});
@@ -67,7 +67,7 @@ void FFunKEventBusSubsystemTests::Define()
 
 				this->EventBusSubsystem->Raise(FEventBusTestEvent());
 				
-				FEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([&eventReceived](const FEventBusTestEvent& test)
+				FFunKEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([&eventReceived](const FEventBusTestEvent& test)
 				{
 					eventReceived = true;
 				});
@@ -80,7 +80,7 @@ void FFunKEventBusSubsystemTests::Define()
 		{
 			It("Should return true given an event handler has been registered", [this]()
 			{
-				FEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
+				FFunKEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
 				TestTrue("Has", this->EventBusSubsystem->Has<FEventBusTestEvent>());
 			});
 			
@@ -96,7 +96,7 @@ void FFunKEventBusSubsystemTests::Define()
 			{
 				It("Should unregister events", [this]()
 				{
-					FEventBusRegistration registration = this->EventBusSubsystem->On<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
+					FFunKEventBusRegistration registration = this->EventBusSubsystem->On<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
 
 					registration.Unregister();
 					

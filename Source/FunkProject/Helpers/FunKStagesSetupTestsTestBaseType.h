@@ -3,8 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "FunKTestBase.h"
-#include "UObject/Object.h"
+#include "Base/FunKTestBase.h"
 #include "FunKStagesSetupTestsTestBaseType.generated.h"
 
 /**

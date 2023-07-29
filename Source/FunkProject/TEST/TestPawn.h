@@ -14,6 +14,9 @@ struct FUNKPROJECT_API FTestEvent
 public:
 	UPROPERTY()
 	FString MyMessage;
+
+	UPROPERTY()
+	ATestPawn* ActorPointerTest = nullptr;
 };
 
 UCLASS()
@@ -36,6 +39,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	UFUNCTION(Server, Reliable)
+	void ServerEventCallback(FTestEvent callbackId);
+
+	UFUNCTION(Client, Reliable)
+	void ClientEventCallback(FTestEvent callbackId);
 
 	UFUNCTION(BlueprintCallable)
 	void TestEvent();
