@@ -73,7 +73,7 @@ void FFunKStagesSetupTests::Define()
 			Setup.AddStage(AFunKStagesSetupTestsTestBaseType, TestFunction3);
 			firstStage.ThenAddStage(AFunKStagesSetupTestsTestBaseType, TestFunction2);
 
-			Stages.Stages[1].Delegate.Execute();
+			Stages.Stages[1].StartDelegate.Execute();
 
 			TestTrue("2 has been called", TestBaseInstance->TestFunction2HasBeenCalled);
 			TestFalse("Not Latent", Stages.Stages[1].IsLatent);
@@ -85,7 +85,7 @@ void FFunKStagesSetupTests::Define()
 			Setup.AddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction3);
 			firstStage.ThenAddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction2);
 
-			Stages.Stages[1].Delegate.Execute();
+			Stages.Stages[1].StartDelegate.Execute();
 
 			TestTrue("2 has been called", TestBaseInstance->TestFunction2HasBeenCalled);
 			TestTrue("Latent", Stages.Stages[1].IsLatent);
@@ -238,7 +238,7 @@ void FFunKStagesSetupTests::Define()
 
 		It("UpdateTimeLimitResult should update the time limit message", [this]()
 		{
-			constexpr EFunKFunctionalTestResult ExpectedResult = EFunKFunctionalTestResult::Skipped;
+			constexpr EFunKTestResult ExpectedResult = EFunKTestResult::Skipped;
 			
 			Setup.AddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction1).UpdateTimeLimitResult(ExpectedResult);
 
@@ -249,7 +249,7 @@ void FFunKStagesSetupTests::Define()
 		{
 			constexpr float ExpectedTime = 123123123.f;
 			const FString ExpectedMessage = TEXT("My timeout message");
-			constexpr EFunKFunctionalTestResult ExpectedResult = EFunKFunctionalTestResult::Skipped;
+			constexpr EFunKTestResult ExpectedResult = EFunKTestResult::Skipped;
 			
 			FFunKTimeLimit timeLimit;
 			timeLimit.Time = ExpectedTime;
