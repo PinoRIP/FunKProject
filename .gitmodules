@@ -1,0 +1,3 @@
+[submodule "Plugins/FunK"]
+	path = Plugins/FunK
+	url = https://github.com/PinoRIP/FunK.git
