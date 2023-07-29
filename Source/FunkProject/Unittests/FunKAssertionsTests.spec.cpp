@@ -4,7 +4,7 @@
 #include "Sinks/FunKSink.h"
 #include "Misc/AutomationTest.h"
 
-BEGIN_DEFINE_SPEC(FFunKAssertionsTests, "FFunKTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
+BEGIN_DEFINE_SPEC(FFunKAssertionsTests, "FFunKTests.AssertionsTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 	UFunKUnittestSink* Sink;
 	TScriptInterface<IFunKSink> SinkInterface;
 	UFunKTestObject* TestObject;
