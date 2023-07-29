@@ -99,4 +99,19 @@ void FFunKAnonymousBitmaskTests::Define()
 			TestTrue("IsSet", AnonymousBitmask.IsSet());
 		});
 	});
+	
+	Describe("Set", [this]()
+	{
+		It("Should combine set bits of Bitmasks", [this]()
+		{
+			constexpr int32 Index = 2;
+			FFunKAnonymousBitmask AnonymousBitmask1(10);
+			FFunKAnonymousBitmask AnonymousBitmask2(10);
+
+			AnonymousBitmask2.Set(Index);
+			AnonymousBitmask1.Set(AnonymousBitmask2);
+			
+			TestTrue("IsSet", AnonymousBitmask1.IsSet(Index));
+		});
+	});
 }
