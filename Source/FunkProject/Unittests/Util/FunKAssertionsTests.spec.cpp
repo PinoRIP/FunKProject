@@ -1080,7 +1080,7 @@ void FFunKAssertionsTests::Define()
 			It("Should succeed given the actual quat equals the expected quat", [this]()
 			{
 				const FQuat quat = FQuat();
-				const bool result = UFunKAssertions::AsserQuatEqual(FQuat(quat), FQuat(quat), this->RandomString, this->Context);
+				const bool result = UFunKAssertions::AssertQuatEqual(FQuat(quat), FQuat(quat), this->RandomString, this->Context);
 
 				TestTrue("Result", result);
 				TestTrue("Sink Valid", this->Context->HasOnly(FFunKEvent::Info(this->RandomString, this->Context->GetName())));
@@ -1090,7 +1090,7 @@ void FFunKAssertionsTests::Define()
 			{
 				const FQuat expected = FQuat();
 				const FQuat actual = FQuat(expected.X, expected.Y, expected.Z, expected.W - 1.e-5f);
-				const bool result = UFunKAssertions::AsserQuatEqual(actual, expected, this->RandomString, this->Context);
+				const bool result = UFunKAssertions::AssertQuatEqual(actual, expected, this->RandomString, this->Context);
 
 				TestTrue("Result", result);
 				TestTrue("Sink Valid", this->Context->HasOnly(FFunKEvent::Info(this->RandomString, this->Context->GetName())));
@@ -1100,7 +1100,7 @@ void FFunKAssertionsTests::Define()
 			{
 				const FQuat expected = FQuat();
 				const FQuat actual = FQuat(expected.X, expected.Y, expected.Z, expected.W - 1.e-3f);
-				const bool result = UFunKAssertions::AsserQuatEqual(actual, expected, this->RandomString, this->Context);
+				const bool result = UFunKAssertions::AssertQuatEqual(actual, expected, this->RandomString, this->Context);
 
 				TestFalse("Result", result);
 				TestTrue("Sink Valid", this->Context->HasOnly(FFunKEvent::Error(this->RandomString, this->Context->GetName())));
