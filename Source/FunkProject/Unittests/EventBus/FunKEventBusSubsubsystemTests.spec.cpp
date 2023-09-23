@@ -1,6 +1,6 @@
 ﻿#include "Misc/AutomationTest.h"
 #include "EventBusTestEvent.h"
-#include "EventBus/FunKEventBusSubsystem.h"
+#include "Internal/EventBus/FunKEventBusSubsystem.h"
 #include "Tests/AutomationEditorCommon.h"
 
 BEGIN_DEFINE_SPEC(FFunKEventBusSubsystemTests, "FunKTests.EventBus.FunKEventBusSubsystemTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
@@ -78,15 +78,29 @@ void FFunKEventBusSubsystemTests::Define()
 
 		Describe("Has", [this]()
 		{
+			It("Should return true given an event of the type has been triggered", [this]()
+			{
+				this->EventBusSubsystem->Raise(FEventBusTestEvent());
+				TestTrue("Has", this->EventBusSubsystem->Has<FEventBusTestEvent>());
+			});
+			
+			It("Should return false given no event of the type has been triggered", [this]()
+			{
+				TestFalse("Has", this->EventBusSubsystem->Has<FEventBusTestEvent>());
+			});
+		});
+
+		Describe("AnyHandler", [this]()
+		{
 			It("Should return true given an event handler has been registered", [this]()
 			{
 				FFunKEventBusRegistration registration = this->EventBusSubsystem->At<FEventBusTestEvent>([](const FEventBusTestEvent& test) { });
-				TestTrue("Has", this->EventBusSubsystem->Has<FEventBusTestEvent>());
+				TestTrue("AnyHandler", this->EventBusSubsystem->AnyHandler());
 			});
 			
 			It("Should return false given no event handler has been registered", [this]()
 			{
-				TestFalse("Has", this->EventBusSubsystem->Has<FEventBusTestEvent>());
+				TestFalse("AnyHandler", this->EventBusSubsystem->AnyHandler());
 			});
 		});
 
@@ -101,7 +115,7 @@ void FFunKEventBusSubsystemTests::Define()
 					registration.Unregister();
 					
 					TestFalse("IsValid", registration.IsValid());
-					TestFalse("EventBusSubsystem has", this->EventBusSubsystem->Has<FEventBusTestEvent>());
+					TestFalse("EventBusSubsystem has", this->EventBusSubsystem->AnyHandler());
 				});
 			});
 		});

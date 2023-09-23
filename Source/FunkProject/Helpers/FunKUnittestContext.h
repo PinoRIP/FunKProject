@@ -3,31 +3,30 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "EventBus/FunKEventBusSubsystem.h"
+#include "Internal/FunKTestBase.h"
+#include "Internal/EventBus/FunKEventBusSubsystem.h"
 #include "UObject/Object.h"
-#include "Events/FunKEvent.h"
+#include "Internal/Events/FunKEvent.h"
 #include "FunKUnittestContext.generated.h"
 
 /**
  * 
  */
 UCLASS()
-class FUNKPROJECT_API UFunKUnittestContext : public UObject
+class FUNKPROJECT_API AFunKUnittestContext : public AFunKTestBase
 {
 	GENERATED_BODY()
 
 public:
-	void SetWorld(UWorld* world);
-	
-
 	bool Has(EFunKEventType InType);
 	bool HasOnly(FFunKEvent InEvent);
 
 	TArray<FFunKEvent> Events;
 
+	virtual void RaiseEvent(FFunKEvent& Event) const override;
+
 	static bool CheckContext(const FFunKEvent& check, const FFunKEvent& in);
 
-	virtual UWorld* GetWorld() const override;
 	virtual void BeginDestroy() override;
 
 private:

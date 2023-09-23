@@ -3,18 +3,9 @@
 
 #include "FunKUnittestContext.h"
 
-#include "EventBus/FunKEventBusSubsystem.h"
+#include "Internal/EventBus/FunKEventBusSubsystem.h"
 
-void UFunKUnittestContext::SetWorld(UWorld* world)
-{
-	auto eventBus = world->GetSubsystem<UFunKEventBusSubsystem>();
-	Registration = eventBus->On<FFunKEvent>([this](const FFunKEvent& eve)
-	{
-		Events.Add(eve);
-	});
-}
-
-bool UFunKUnittestContext::Has(EFunKEventType InType)
+bool AFunKUnittestContext::Has(EFunKEventType InType)
 {
 	for (FFunKEvent& Event : Events)
 	{
@@ -25,7 +16,7 @@ bool UFunKUnittestContext::Has(EFunKEventType InType)
 	return false;
 }
 
-bool UFunKUnittestContext::HasOnly(FFunKEvent InEvent)
+bool AFunKUnittestContext::HasOnly(FFunKEvent InEvent)
 {
 	for (FFunKEvent& Event : Events)
 	{
@@ -36,7 +27,13 @@ bool UFunKUnittestContext::HasOnly(FFunKEvent InEvent)
 	return Events.Num() > 0;
 }
 
-bool UFunKUnittestContext::CheckContext(const FFunKEvent& check, const FFunKEvent& in)
+void AFunKUnittestContext::RaiseEvent(FFunKEvent& Event) const
+{
+	AFunKUnittestContext* that = const_cast<AFunKUnittestContext*>(this);
+	that->Events.Add(FFunKEvent(Event));
+}
+
+bool AFunKUnittestContext::CheckContext(const FFunKEvent& check, const FFunKEvent& in)
 {
 	if(check.Type != in.Type || !check.Message.Contains(in.Message))
 		return false;
@@ -57,12 +54,7 @@ bool UFunKUnittestContext::CheckContext(const FFunKEvent& check, const FFunKEven
 	return true;
 }
 
-UWorld* UFunKUnittestContext::GetWorld() const
-{
-	return World;
-}
-
-void UFunKUnittestContext::BeginDestroy()
+void AFunKUnittestContext::BeginDestroy()
 {
 	Registration.Unregister();
 	
