@@ -78,3 +78,11 @@ void ATestPawn::TestEvent()
 	}
 }
 
+void ATestPawn::TestDisableInput()
+{
+	UGameInstance* GameInst = GetWorld()->GetGameInstance();
+	UGameViewportClient* ViewportClient = GameInst->GetGameViewportClient();
+
+	ViewportClient->SetIgnoreInput(true);
+}
+

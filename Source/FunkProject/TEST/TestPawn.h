@@ -6,6 +6,8 @@
 #include "GameFramework/Pawn.h"
 #include "TestPawn.generated.h"
 
+class ATestPawn;
+
 USTRUCT()
 struct FUNKPROJECT_API FTestEvent
 {
@@ -47,5 +49,8 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void TestEvent();
+
+	UFUNCTION(BlueprintCallable)
+	void TestDisableInput();
 	
 };
