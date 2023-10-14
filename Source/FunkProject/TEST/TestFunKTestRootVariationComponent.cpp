@@ -4,14 +4,26 @@
 #include "TestFunKTestRootVariationComponent.h"
 
 
+FString UTestFunKTestRootVariationFunctionality::GetReadableIdent() const
+{
+	if(Index == INDEX_NONE) return "Variation Root Test Pending";
+	return "Variation Root Test " + FString::FromInt(Index);
+}
+
+void UTestFunKTestRootVariationFunctionality::OnAdded()
+{
+	Spawner->Current = Index;
+	Spawner->CalledIsReady = 0;
+}
+
+void UTestFunKTestRootVariationFunctionality::OnRemoved()
+{
+	Spawner->Current = INDEX_NONE;
+}
+
 // Sets default values for this component's properties
 UTestFunKTestRootVariationComponent::UTestFunKTestRootVariationComponent()
 {
-	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
-	// off to improve performance if you don't need them.
-	PrimaryComponentTick.bCanEverTick = true;
-
-	// ...
 }
 
 int32 UTestFunKTestRootVariationComponent::GetCount()
@@ -19,27 +31,18 @@ int32 UTestFunKTestRootVariationComponent::GetCount()
 	return 2;
 }
 
-void UTestFunKTestRootVariationComponent::Begin(int32 index)
+UFunKTestFunctionality* UTestFunKTestRootVariationComponent::GetFunctionality(int32 Index)
 {
-	Current = index;
-	CalledIsReady = 0;
+	UTestFunKTestRootVariationFunctionality* Functionality = NewObject<UTestFunKTestRootVariationFunctionality>();
+	Functionality->Spawner = this;
+	Functionality->Index = Index;
+
+	return Functionality;
 }
 
-bool UTestFunKTestRootVariationComponent::IsReady()
+bool UTestFunKTestRootVariationComponent::IsReady(UFunKTestFunctionality* Instance, int32 Index)
 {
 	return WaitFor <= CalledIsReady++;
-}
-
-void UTestFunKTestRootVariationComponent::Finish()
-{
-	Current = INDEX_NONE;
-	Super::Finish();
-}
-
-FString UTestFunKTestRootVariationComponent::GetName()
-{
-	if(Current == INDEX_NONE) return "Variation Root Test Pending";
-	return "Variation Root Test " + FString::FromInt(Current);
 }
 
 
