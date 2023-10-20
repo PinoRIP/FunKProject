@@ -4,19 +4,19 @@
 #include "TestFunKTestVariationComponent.h"
 
 
-FString UTestFunKTestVariationFunctionality::GetReadableIdent() const
+FString UTestFunKTestVariationFragment::GetReadableIdent() const
 {
 	if(Index == INDEX_NONE) return "Variation Root Test Pending";
 	return "Variation Root Test " + FString::FromInt(Index);
 }
 
-void UTestFunKTestVariationFunctionality::OnAdded()
+void UTestFunKTestVariationFragment::OnAdded()
 {
 	Spawner->Current = Index;
 	Spawner->CalledIsReady = 0;
 }
 
-void UTestFunKTestVariationFunctionality::OnRemoved()
+void UTestFunKTestVariationFragment::OnRemoved()
 {
 	Spawner->Current = INDEX_NONE;
 }
@@ -31,16 +31,16 @@ int32 UTestFunKTestVariationComponent::GetCount()
 	return 2;
 }
 
-UFunKTestFunctionality* UTestFunKTestVariationComponent::GetFunctionality(int32 Index)
+UFunKTestFragment* UTestFunKTestVariationComponent::GetFragment(int32 Index)
 {
-	UTestFunKTestVariationFunctionality* Functionality = NewObject<UTestFunKTestVariationFunctionality>();
+	UTestFunKTestVariationFragment* Functionality = NewObject<UTestFunKTestVariationFragment>();
 	Functionality->Spawner = this;
 	Functionality->Index = Index;
 
 	return Functionality;
 }
 
-bool UTestFunKTestVariationComponent::IsReady(UFunKTestFunctionality* Instance, int32 Index)
+bool UTestFunKTestVariationComponent::IsReady(UFunKTestFragment* Instance, int32 Index)
 {
 	return WaitFor <= CalledIsReady++;
 }

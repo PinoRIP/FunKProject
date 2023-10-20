@@ -3,10 +3,10 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Internal/FunKTestBase.h"
-#include "Internal/EventBus/FunKEventBusSubsystem.h"
+#include "FunKTestBase.h"
+#include "EventBus/FunKEventBusSubsystem.h"
 #include "UObject/Object.h"
-#include "Internal/Events/FunKEvent.h"
+#include "Events/FunKEvent.h"
 #include "FunKUnittestContext.generated.h"
 
 /**

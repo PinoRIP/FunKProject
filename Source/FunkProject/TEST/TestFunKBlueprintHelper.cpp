@@ -3,7 +3,7 @@
 
 #include "TestFunKBlueprintHelper.h"
 
-#include "Variations/FunKTestVariationComponent.h"
+#include "Extensions/FunKTestVariationComponent.h"
 
 
 void UTestFunKBlueprintHelper::BeginVariationComponent(UFunKTestVariationComponent* Component, int32 index)

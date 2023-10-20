@@ -4,7 +4,7 @@
 #include "TestPawn.h"
 
 #include "FunKWorldSubsystem.h"
-#include "Internal/EventBus/FunKEventBusSubsystem.h"
+#include "EventBus/FunKEventBusSubsystem.h"
 
 
 // Sets default values

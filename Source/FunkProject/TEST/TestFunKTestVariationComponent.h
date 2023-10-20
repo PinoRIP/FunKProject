@@ -3,13 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Functionality/FunKTestFunctionality.h"
-#include "Variations/FunKTestVariationComponent.h"
+#include "Extensions/FunKTestFragment.h"
+#include "Extensions/FunKTestVariationComponent.h"
 #include "TestFunKTestVariationComponent.generated.h"
 
 
-UCLASS()
-class UTestFunKTestVariationFunctionality : public UFunKTestFunctionality
+class UTestFunKTestVariationComponent;
+
+UCLASS(NotBlueprintType, HideDropdown)
+class UTestFunKTestVariationFragment : public UFunKTestFragment
 {
 	GENERATED_BODY()
 
@@ -33,8 +35,8 @@ public:
 	UTestFunKTestVariationComponent();
 
 	virtual int32 GetCount() override;
-	virtual UFunKTestFunctionality* GetFunctionality(int32 Index) override;
-	virtual bool IsReady(UFunKTestFunctionality* Instance, int32 Index) override;
+	virtual UFunKTestFragment* GetFragment(int32 Index) override;
+	virtual bool IsReady(UFunKTestFragment* Instance, int32 Index) override;
 
 protected:
 	UPROPERTY(BlueprintReadOnly)
@@ -45,5 +47,5 @@ protected:
 
 	int32 CalledIsReady = 0;
 
-	friend UTestFunKTestVariationFunctionality;
+	friend UTestFunKTestVariationFragment;
 };

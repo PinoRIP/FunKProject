@@ -3,7 +3,7 @@
 
 #include "FunKUnittestContext.h"
 
-#include "Internal/EventBus/FunKEventBusSubsystem.h"
+#include "EventBus/FunKEventBusSubsystem.h"
 
 bool AFunKUnittestContext::Has(EFunKEventType InType)
 {

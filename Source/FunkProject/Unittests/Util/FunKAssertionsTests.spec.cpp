@@ -1,4 +1,4 @@
-﻿#include "Internal/Events/FunKEvent.h"
+﻿#include "Events/FunKEvent.h"
 #include "Util/FunKAssertionBlueprintFunctionLibrary.h"
 #include "FunkProject/Helpers/FunKTestObject.h"
 #include "FunkProject/Helpers/FunKUnittestContext.h"
