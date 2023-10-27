@@ -16,7 +16,7 @@ class UTestFunKTestVariationFragment : public UFunKTestFragment
 	GENERATED_BODY()
 
 public:
-	virtual FString GetReadableIdent() const override;
+	virtual FString GetLogName() const override;
 	virtual void OnAdded() override;
 	virtual void OnRemoved() override;
 	

@@ -25,7 +25,7 @@ public:
 
 	virtual void RaiseEvent(FFunKEvent& Event) const override;
 
-	static bool CheckContext(const FFunKEvent& check, const FFunKEvent& in);
+	static bool CheckContext(const FFunKEvent& Check, const FFunKEvent& In);
 
 	virtual void BeginDestroy() override;
 

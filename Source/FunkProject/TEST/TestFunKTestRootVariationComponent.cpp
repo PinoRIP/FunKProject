@@ -4,9 +4,11 @@
 #include "TestFunKTestRootVariationComponent.h"
 
 
-FString UTestFunKTestRootVariationFragment::GetReadableIdent() const
+FString UTestFunKTestRootVariationFragment::GetLogName() const
 {
-	if(Index == INDEX_NONE) return "Variation Root Test Pending";
+	if (Index == INDEX_NONE)
+		return "Variation Root Test Pending";
+	
 	return "Variation Root Test " + FString::FromInt(Index);
 }
 

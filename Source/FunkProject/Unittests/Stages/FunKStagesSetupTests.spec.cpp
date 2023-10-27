@@ -69,9 +69,9 @@ void FFunKStagesSetupTests::Define()
 
 		It("ThenAddStage should add a stage after the setup handle it has been called on", [this]()
 		{
-			FFunKStageSetup firstStage = Setup.AddStage(AFunKStagesSetupTestsTestBaseType, TestFunction1);
+			FFunKStageSetup FirstStage = Setup.AddStage(AFunKStagesSetupTestsTestBaseType, TestFunction1);
 			Setup.AddStage(AFunKStagesSetupTestsTestBaseType, TestFunction3);
-			firstStage.ThenAddStage(AFunKStagesSetupTestsTestBaseType, TestFunction2);
+			FirstStage.ThenAddStage(AFunKStagesSetupTestsTestBaseType, TestFunction2);
 
 			Stages.Stages[1].StartDelegate.Execute();
 
@@ -81,9 +81,9 @@ void FFunKStagesSetupTests::Define()
 
 		It("ThenAddLatentStage should add a latent stage after the setup handle it has been called on", [this]()
 		{
-			FFunKLatentStageSetup firstStage = Setup.AddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction1);
+			FFunKLatentStageSetup FirstStage = Setup.AddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction1);
 			Setup.AddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction3);
-			firstStage.ThenAddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction2);
+			FirstStage.ThenAddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction2);
 
 			Stages.Stages[1].StartDelegate.Execute();
 
@@ -251,12 +251,12 @@ void FFunKStagesSetupTests::Define()
 			const FString ExpectedMessage = TEXT("My timeout message");
 			constexpr EFunKTestResult ExpectedResult = EFunKTestResult::Skipped;
 			
-			FFunKTimeLimit timeLimit;
-			timeLimit.Time = ExpectedTime;
-			timeLimit.Message = FText::FromString(ExpectedMessage);
-			timeLimit.Result = ExpectedResult;
+			FFunKTimeLimit TimeLimit;
+			TimeLimit.Time = ExpectedTime;
+			TimeLimit.Message = FText::FromString(ExpectedMessage);
+			TimeLimit.Result = ExpectedResult;
 			
-			Setup.AddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction1).UpdateTimeLimit(timeLimit);
+			Setup.AddLatentStage(AFunKStagesSetupTestsTestBaseType, TestFunction1).UpdateTimeLimit(TimeLimit);
 
 			TestEqual("Time", Stages.Stages[0].TimeLimit.Time, ExpectedTime);
 			TestEqual("Message", Stages.Stages[0].TimeLimit.Message.ToString(), ExpectedMessage);

@@ -29,25 +29,25 @@ bool AFunKUnittestContext::HasOnly(FFunKEvent InEvent)
 
 void AFunKUnittestContext::RaiseEvent(FFunKEvent& Event) const
 {
-	AFunKUnittestContext* that = const_cast<AFunKUnittestContext*>(this);
-	that->Events.Add(FFunKEvent(Event));
+	AFunKUnittestContext* That = const_cast<AFunKUnittestContext*>(this);
+	That->Events.Add(FFunKEvent(Event));
 }
 
-bool AFunKUnittestContext::CheckContext(const FFunKEvent& check, const FFunKEvent& in)
+bool AFunKUnittestContext::CheckContext(const FFunKEvent& Check, const FFunKEvent& In)
 {
-	if(check.Type != in.Type || !check.Message.Contains(in.Message))
+	if(Check.Type != In.Type || !Check.Message.Contains(In.Message))
 		return false;
 
-	for (const FString& InContext : in.Context)
+	for (const FString& InContext : In.Context)
 	{
-		bool found = false;
-		for (const FString& CheckContext : check.Context)
+		bool bFound = false;
+		for (const FString& CheckContext : Check.Context)
 		{
-			found = CheckContext.Contains(InContext);
-			if(found) break;
+			bFound = CheckContext.Contains(InContext);
+			if(bFound) break;
 		}
 
-		if(!found)
+		if(!bFound)
 			return false;
 	}
 

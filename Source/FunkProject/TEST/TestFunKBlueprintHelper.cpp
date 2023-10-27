@@ -6,7 +6,7 @@
 #include "Extensions/FunKTestVariationComponent.h"
 
 
-void UTestFunKBlueprintHelper::BeginVariationComponent(UFunKTestVariationComponent* Component, int32 index)
+void UTestFunKBlueprintHelper::BeginVariationComponent(UFunKTestVariationComponent* Component, int32 Index)
 {
 	//Component->Begin(index);
 }

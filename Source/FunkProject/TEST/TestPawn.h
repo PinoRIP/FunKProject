@@ -42,10 +42,10 @@ public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	UFUNCTION(Server, Reliable)
-	void ServerEventCallback(FTestEvent callbackId);
+	void ServerEventCallback(FTestEvent CallbackId);
 
 	UFUNCTION(Client, Reliable)
-	void ClientEventCallback(FTestEvent callbackId);
+	void ClientEventCallback(FTestEvent CallbackId);
 
 	UFUNCTION(BlueprintCallable)
 	void TestEvent();

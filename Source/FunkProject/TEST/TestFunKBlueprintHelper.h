@@ -17,7 +17,7 @@ class FUNKPROJECT_API UTestFunKBlueprintHelper : public UBlueprintFunctionLibrar
 
 public:
 	UFUNCTION(BlueprintCallable, Category = "FunK|Test")
-	static void BeginVariationComponent(UFunKTestVariationComponent* Component, int32 index = 0);
+	static void BeginVariationComponent(UFunKTestVariationComponent* Component, int32 Index = 0);
 
 	UFUNCTION(BlueprintCallable, Category = "FunK|Test")
 	static void FinishVariationComponent(UFunKTestVariationComponent* Component);
