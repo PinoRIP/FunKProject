@@ -3,8 +3,8 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Extensions/FunKTestFragment.h"
-#include "Extensions/FunKTestVariationComponent.h"
+#include "Old/Extensions/FunKTestFragment.h"
+#include "Old/Extensions/FunKTestVariationComponent.h"
 #include "TestFunKTestVariationComponent.generated.h"
 
 

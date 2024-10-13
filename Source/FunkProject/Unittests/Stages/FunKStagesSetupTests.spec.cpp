@@ -1,6 +1,6 @@
 ﻿#include "FunkProject/Helpers/FunKStagesSetupTestsTestBaseType.h"
 #include "Misc/AutomationTest.h"
-#include "Setup/FunKStagesSetup.h"
+#include "Old/Setup/FunKStagesSetup.h"
 
 BEGIN_DEFINE_SPEC(FFunKStagesSetupTests, "FunKTests.StagesSetupTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 	AFunKStagesSetupTestsTestBaseType* TestBaseInstance;

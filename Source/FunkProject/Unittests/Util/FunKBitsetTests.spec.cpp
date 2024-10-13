@@ -1,5 +1,5 @@
 ﻿#include "Misc/AutomationTest.h"
-#include "Util/FunKBitset.h"
+#include "Old/Util/FunKBitset.h"
 
 BEGIN_DEFINE_SPEC(FFunKBitsetTests, "FunKTests.AnonymousBitmaskTestsasd", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)
 	END_DEFINE_SPEC(FFunKBitsetTests)

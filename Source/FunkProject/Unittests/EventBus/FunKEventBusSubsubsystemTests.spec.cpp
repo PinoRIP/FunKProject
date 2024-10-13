@@ -1,6 +1,6 @@
 ﻿#include "Misc/AutomationTest.h"
 #include "EventBusTestEvent.h"
-#include "EventBus/FunKEventBusSubsystem.h"
+#include "Old/EventBus/FunKEventBusSubsystem.h"
 #include "Tests/AutomationEditorCommon.h"
 
 BEGIN_DEFINE_SPEC(FFunKEventBusSubsystemTests, "FunKTests.EventBus.FunKEventBusSubsystemTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)

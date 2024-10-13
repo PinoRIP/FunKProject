@@ -1,5 +1,5 @@
-﻿#include "Events/FunKEvent.h"
-#include "Util/FunKAssertionBlueprintFunctionLibrary.h"
+﻿#include "Old/Events/FunKEvent.h"
+#include "Old/Util/FunKAssertionBlueprintFunctionLibrary.h"
 #include "FunkProject/Helpers/FunKTestObject.h"
 #include "FunkProject/Helpers/FunKUnittestContext.h"
 #include "Misc/AutomationTest.h"

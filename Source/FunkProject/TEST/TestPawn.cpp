@@ -3,8 +3,8 @@
 
 #include "TestPawn.h"
 
-#include "FunKWorldSubsystem.h"
-#include "EventBus/FunKEventBusSubsystem.h"
+#include "Old/FunKWorldSubsystem.h"
+#include "Old/EventBus/FunKEventBusSubsystem.h"
 
 
 // Sets default values
