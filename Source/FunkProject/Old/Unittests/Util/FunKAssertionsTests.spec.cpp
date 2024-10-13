@@ -1,7 +1,7 @@
 ﻿#include "Old/Events/FunKEvent.h"
 #include "Old/Util/FunKAssertionBlueprintFunctionLibrary.h"
-#include "FunkProject/Helpers/FunKTestObject.h"
-#include "FunkProject/Helpers/FunKUnittestContext.h"
+#include "FunkProject/Old/Helpers/FunKTestObject.h"
+#include "FunkProject/Old/Helpers/FunKUnittestContext.h"
 #include "Misc/AutomationTest.h"
 
 BEGIN_DEFINE_SPEC(FFunKAssertionsTests, "FunKTests.AssertionsTests", EAutomationTestFlags::EditorContext | EAutomationTestFlags::EngineFilter)

@@ -1,4 +1,4 @@
-﻿#include "FunkProject/Helpers/FunKStagesSetupTestsTestBaseType.h"
+﻿#include "FunkProject/Old/Helpers/FunKStagesSetupTestsTestBaseType.h"
 #include "Misc/AutomationTest.h"
 #include "Old/Setup/FunKStagesSetup.h"
 
